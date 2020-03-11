@@ -8,12 +8,15 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.example.mybatisDemo.service;
+package com.example.mybatisDemo.service.impl;
 
 import com.example.mybatisDemo.entity.User;
 import com.example.mybatisDemo.mapper.UserMapper;
+import com.example.mybatisDemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -24,7 +27,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0.0
  */
 @Service
-public class UserServiceImpl implements  UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserMapper userMapper;
@@ -32,5 +35,11 @@ public class UserServiceImpl implements  UserService {
     @Override
     public User findById(int id) {
         return  userMapper.findById(id);
+    }
+
+    @Override
+    public List<User> findByName(String name) {
+
+        return userMapper.findByName(name);
     }
 }

@@ -7,10 +7,36 @@
         <result column="userName" jdbcType="VARCHAR" property="userName"/>
         <result column="passWord" jdbcType="VARCHAR" property="passWord"/>
         <result column="realName" jdbcType="VARCHAR" property="realName"/>
+
+        <!-- association属性必需在 collection之前写，不然会报错-->
+        <association property="cat" javaType="com.example.mybatisDemo.entity.Cat">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"></result>
+        </association>
+
+        <collection property="address" ofType="com.example.mybatisDemo.entity.Address">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"></result>
+        </collection>
     </resultMap>
 
-    <select id="findById" resultType="com.example.mybatisDemo.entity.User">
-        select * from user where id = #{id}
+    <select id="findById" resultMap="BaseResultMap">
+       SELECT * FROM `user` u
+       LEFT JOIN `address` a ON u.id=a.id
+       LEFT JOIN `cat` c ON u.cat=c.id
+       WHERE u.id=#{id}
     </select>
+
+    <select id="findByName" resultMap="BaseResultMap">
+       SELECT * FROM `user` u
+       LEFT JOIN `address` a ON u.id=a.id
+       LEFT JOIN `cat` c ON u.cat=c.id
+       WHERE u.userName=#{userName}
+    </select>
+
+    <insert id="createUser" parameterType="com.example.mybatisDemo.entity.User">
+          insert into user(id,userName,passWord,realName,addres,cat)
+    </insert>
+
 
 </mapper>

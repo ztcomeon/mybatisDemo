@@ -12,6 +12,8 @@ package com.example.mybatisDemo.service;
 
 import com.example.mybatisDemo.entity.User;
 
+import java.util.List;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈〉
@@ -23,4 +25,6 @@ import com.example.mybatisDemo.entity.User;
 public interface UserService {
 
     User findById(int id);
+
+    List<User> findByName(String name);
 }

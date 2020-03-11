@@ -14,6 +14,8 @@ import com.example.mybatisDemo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈〉
@@ -27,4 +29,6 @@ import org.springframework.stereotype.Component;
 public interface UserMapper {
 
     User findById(int id);
+
+    List<User> findByName(String name);
 }

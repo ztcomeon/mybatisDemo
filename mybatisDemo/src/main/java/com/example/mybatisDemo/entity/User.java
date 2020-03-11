@@ -10,6 +10,8 @@
  */
 package com.example.mybatisDemo.entity;
 
+import java.util.List;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈〉
@@ -24,6 +26,10 @@ public class User {
     private String userName;
     private String passWord;
     private String realName;
+
+    private List<Address> address;
+
+    private Cat cat;
 
     public Integer getId() {
         return id;
@@ -57,6 +63,22 @@ public class User {
         this.realName = realName;
     }
 
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
+
+    public Cat getCat() {
+        return cat;
+    }
+
+    public void setCat(Cat cats) {
+        this.cat = cats;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -64,8 +86,8 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", realName='" + realName + '\'' +
+                ", address=" + address +
+                ", cat=" + cat +
                 '}';
     }
-
-
 }
