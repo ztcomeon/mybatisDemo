@@ -12,6 +12,7 @@ package com.example.mybatisDemo.mapper;
 
 import com.example.mybatisDemo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -22,6 +23,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 1.0.0
  */
 @Mapper
+@Component
 public interface UserMapper {
 
     User findById(int id);
