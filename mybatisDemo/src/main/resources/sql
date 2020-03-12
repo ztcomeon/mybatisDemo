@@ -1,0 +1,43 @@
+/*DDL 信息*/------------
+
+CREATE TABLE `user` (
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `passWord` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `realName` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `cat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cat` (`cat`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`cat`) REFERENCES `cat` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4
+
+
+/*DDL 信息*/------------
+
+CREATE TABLE `address` (
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
+
+
+/*DDL 信息*/------------
+
+CREATE TABLE `cat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4
+
+
+/*DDL 信息*/------------
+
+CREATE TABLE `user_address` (
+  `userId` int(11) DEFAULT NULL,
+  `addressId` int(11) DEFAULT NULL,
+  KEY `userId` (`userId`),
+  KEY `addressId` (`addressId`),
+  CONSTRAINT `user_address_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `user_address_ibfk_2` FOREIGN KEY (`addressId`) REFERENCES `address` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
