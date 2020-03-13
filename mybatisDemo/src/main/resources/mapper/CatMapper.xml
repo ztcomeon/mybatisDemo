@@ -5,10 +5,16 @@
     <resultMap id="BaseResultMap" type="com.example.mybatisDemo.entity.Cat">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
+        <association property="user" javaType="com.example.mybatisDemo.entity.User">
+            <result column="id" jdbcType="INTEGER" property="id"/>
+            <result column="userName" jdbcType="VARCHAR" property="userName"/>
+            <result column="passWord" jdbcType="VARCHAR" property="passWord"/>
+            <result column="realName" jdbcType="VARCHAR" property="realName"/>
+        </association>
     </resultMap>
 
-    <select id="findById" resultType="com.example.mybatisDemo.entity.Cat">
-        select * from cat where id = #{id}
+    <select id="findById" resultMap="BaseResultMap">
+        select * from cat c left join user u on c.user_id=u.id where c.id = #{id}
     </select>
 
 </mapper>

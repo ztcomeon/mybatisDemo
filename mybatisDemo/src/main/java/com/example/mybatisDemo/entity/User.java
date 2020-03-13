@@ -27,9 +27,13 @@ public class User {
     private String passWord;
     private String realName;
 
-    private List<Address> address;
+    //用户--地址：：多对多，需要一个中间表，和jpa是不同的，多对多不需要在双方定义List<Object>
+    //用户--猫：：一对一，在多方定义一方的ID（外键）便可以
+    //用户--狗：：一对多
+    private List<Dog> dog;
 
-    private Cat cat;
+    private List<Address> addresses;
+
 
     public Integer getId() {
         return id;
@@ -63,20 +67,20 @@ public class User {
         this.realName = realName;
     }
 
-    public List<Address> getAddress() {
-        return address;
+    public List<Dog> getDog() {
+        return dog;
     }
 
-    public void setAddress(List<Address> address) {
-        this.address = address;
+    public void setDog(List<Dog> dog) {
+        this.dog = dog;
     }
 
-    public Cat getCat() {
-        return cat;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setCat(Cat cats) {
-        this.cat = cats;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
@@ -86,8 +90,10 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", realName='" + realName + '\'' +
-                ", address=" + address +
-                ", cat=" + cat +
+                ", dog=" + dog +
+                ", addresses=" + addresses +
                 '}';
     }
+
+
 }

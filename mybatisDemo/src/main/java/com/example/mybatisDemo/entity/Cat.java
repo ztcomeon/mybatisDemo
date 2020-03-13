@@ -23,6 +23,9 @@ public class Cat {
     private Integer id;
     private String name;
 
+    //用户和猫的关系是一对一，其中一个维护外键（表中对应userId）
+    private User user;
+
     public Integer getId() {
         return id;
     }
@@ -39,11 +42,20 @@ public class Cat {
         this.name = name;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Cat{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

@@ -9,34 +9,28 @@
         <result column="realName" jdbcType="VARCHAR" property="realName"/>
 
         <!-- association属性必需在 collection之前写，不然会报错-->
-        <association property="cat" javaType="com.example.mybatisDemo.entity.Cat">
-            <id property="id" column="id"></id>
-            <result property="name" column="name"></result>
-        </association>
+        <!--<association property="cat" javaType="com.example.mybatisDemo.entity.Cat">-->
+        <!--<id property="id" column="id"></id>-->
+        <!--<result property="name" column="name"></result>-->
+        <!--<result property="user" column="user_id"></result>-->
+        <!--</association>-->
 
-        <collection property="address" ofType="com.example.mybatisDemo.entity.Address">
+        <collection property="dog" ofType="com.example.mybatisDemo.entity.Dog">
             <id property="id" column="id"></id>
             <result property="name" column="name"></result>
         </collection>
     </resultMap>
 
-    <select id="findById" resultMap="BaseResultMap">
-       SELECT * FROM `user` u
-       LEFT JOIN `address` a ON u.id=a.id
-       LEFT JOIN `cat` c ON u.cat=c.id
-       WHERE u.id=#{id}
-    </select>
+    <!--<select id="findById" resultMap="BaseResultMap">-->
+    <!--SELECT * FROM `user` u where u.id=#{id}-->
+    <!--</select>-->
 
-    <select id="findByName" resultMap="BaseResultMap">
-       SELECT * FROM `user` u
-       LEFT JOIN `address` a ON u.id=a.id
-       LEFT JOIN `cat` c ON u.cat=c.id
-       WHERE u.userName=#{userName}
+    <select id="findById" resultMap="BaseResultMap">
+       SELECT * FROM `user` u left join dog d on u.id=d.user_id where u.id=#{id}
     </select>
 
     <insert id="createUser" parameterType="com.example.mybatisDemo.entity.User">
-          insert into user(id,userName,passWord,realName,addres,cat)
+      insert into user(userName,passWord,realName) values (#{userName},#{passWord},#{realName} )
     </insert>
-
 
 </mapper>

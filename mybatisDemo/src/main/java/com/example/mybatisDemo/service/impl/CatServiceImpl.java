@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0.0
  */
 @Service
-public class CatImpl implements CatService {
+public class CatServiceImpl implements CatService {
 
     @Autowired
     CatMapper catMapper;

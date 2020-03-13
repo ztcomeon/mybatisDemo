@@ -15,6 +15,7 @@ import com.example.mybatisDemo.mapper.UserMapper;
 import com.example.mybatisDemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,5 +42,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findByName(String name) {
 
         return userMapper.findByName(name);
+    }
+
+    @Transactional
+    @Override
+    public void createUser(User user) {
+         userMapper.createUser(user);
     }
 }

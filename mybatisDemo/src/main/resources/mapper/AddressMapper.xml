@@ -6,6 +6,14 @@
     <resultMap id="BaseResultMap" type="com.example.mybatisDemo.entity.Address">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
+        <collection property="users" ofType="com.example.mybatisDemo.entity.User">
+            <id property="id" column="id"></id>
+
+            <result column="userName" property="userName"/>
+            <result column="passWord"  property="passWord"/>
+            <result column="realName"  property="realName"/>
+
+        </collection>
     </resultMap>
 
     <select id="findById" resultType="com.example.mybatisDemo.entity.Address">

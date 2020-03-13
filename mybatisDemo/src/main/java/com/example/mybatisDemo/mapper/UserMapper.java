@@ -31,4 +31,6 @@ public interface UserMapper {
     User findById(int id);
 
     List<User> findByName(String name);
+
+    void createUser(User user);
 }

@@ -27,4 +27,6 @@ public interface UserService {
     User findById(int id);
 
     List<User> findByName(String name);
+
+   void createUser(User user);
 }

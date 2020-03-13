@@ -10,8 +10,10 @@
  */
 package com.example.mybatisDemo.entity;
 
+import java.util.List;
+
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author Administrator
@@ -22,6 +24,9 @@ public class Address {
 
     private Integer id;
     private String name;
+
+    //用户和地址是多对多的关系，需要一个中间表
+    private List<User> users;
 
     public Integer getId() {
         return id;
@@ -39,11 +44,20 @@ public class Address {
         this.name = name;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", users=" + users +
                 '}';
     }
 }
