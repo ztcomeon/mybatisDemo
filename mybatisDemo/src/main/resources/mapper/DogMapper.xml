@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisDemo.mapper.DogMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisDemo.entity.Dog">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <association property="user" javaType="com.example.mybatisDemo.entity.User">
+            <result column="id" jdbcType="INTEGER" property="id"/>
+            <result column="userName" jdbcType="VARCHAR" property="userName"/>
+            <result column="passWord" jdbcType="VARCHAR" property="passWord"/>
+            <result column="realName" jdbcType="VARCHAR" property="realName"/>
+        </association>
+    </resultMap>
+    <!-- 关联方式查询 -->
+    <select id="findById" resultMap="BaseResultMap">
+        select * from dog d left join user u on d.user_id=u.id  where d.id = #{id}
+    </select>
+
+    <!-- 注意关联属性的存法 -->
+    <insert id="createDog" parameterType="com.example.mybatisDemo.entity.Dog">
+      insert into dog(name,user_id) values (#{name},#{user.id} )
+    </insert>
+
+</mapper>

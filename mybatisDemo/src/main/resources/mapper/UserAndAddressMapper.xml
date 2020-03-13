@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisDemo.mapper.UserAndAddressMapper">
+
+
+    <insert id="createUserAndAddress" parameterType="com.example.mybatisDemo.entity.UserAndAddress">
+      insert into user_address(userId,addressId) values (#{user.id},#{address.id})
+    </insert>
+
+</mapper>
